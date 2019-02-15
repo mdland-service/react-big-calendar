@@ -189,7 +189,7 @@ export default class TimeGrid extends Component {
       >
         <TimeGridHeader
           range={range}
-          events={allDayEvents}
+          events={[]}
           width={width}
           getNow={getNow}
           localizer={localizer}
