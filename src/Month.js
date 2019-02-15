@@ -34,6 +34,15 @@ class MonthView extends React.Component {
     }
   }
 
+  ///ADDITIONAL CODE
+  ///
+  onlyReturnAllDayEvents = events => {
+    return events.filter(event => event.allDay)
+  }
+  ///
+  ///
+  ///
+
   componentWillReceiveProps({ date }) {
     this.setState({
       needLimitMeasure: !dates.eq(date, this.props.date),
@@ -109,6 +118,10 @@ class MonthView extends React.Component {
 
     events.sort((a, b) => sortEvents(a, b, accessors))
 
+    //
+    console.log(this.onlyReturnAllDayEvents(events))
+    //
+
     return (
       <DateContentRow
         key={weekIdx}
@@ -118,7 +131,7 @@ class MonthView extends React.Component {
         getNow={getNow}
         date={date}
         range={week}
-        events={events}
+        events={this.onlyReturnAllDayEvents(events)}
         maxRows={rowLimit}
         selected={selected}
         selectable={selectable}
